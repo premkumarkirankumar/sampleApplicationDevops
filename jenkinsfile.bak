@@ -47,5 +47,24 @@ pipeline {
 		sh script: '/opt/apache-maven-3.8.4/bin/mvn package'	
            }		
         }
+	    stage('Image') {
+	   steps {
+                echo 'image..'
+		sh script: 'cd opt/deploy
+		            sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .
+					sudo touch Dockerfile
+					sudo chmod 777 Dockerfile
+					cat <<EOT>> Dockerfile
+					FROM tomcat:8
+					ADD petclinic.war /usr/local/tomcat/webapps/
+					CMD "catalina.sh" "run"
+					EXPOSE 8080
+					EOT
+					sudo doocker build -t 5688kiran/sampledevopsapplication:$BUILD_NUMBER .
+					sudo docker login -u 5688kiean -p Munny*5688
+					sudo docker push 5688kiran/sampledevopsapplication:$BUILD_NUMBER'
+					
+           }		
+        }
     }
 }
