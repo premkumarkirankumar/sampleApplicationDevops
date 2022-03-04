@@ -53,7 +53,7 @@ pipeline {
 		sh script: 'sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .'				
 		sh script: 'sudo touch Dockerfile'		
 		sh script: 'sudo chmod 777 Dockerfile'				
-		sh script: 'sudo /root/Dockerfile /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline'				
+		sh script: 'echo "FROM tomcat:8" >> Dockerfile'		
 		sh script: 'sudo docker build -t 5688kiran/sampledevopsapplication:$BUILD_NUMBER .'	
 		sh script: 'sudo docker login -u 5688kiran -p Munny*5688'				
 		sh script: 'sudo docker push 5688kiran/sampledevopsapplication:$BUILD_NUMBER'	
