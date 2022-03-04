@@ -48,9 +48,10 @@ pipeline {
            }		
         }
 	    stage('Image Creation') {
-				withCredentials([usernamePassword(credentialsId: 'test-credentials-dockerhub', usernameVariable: 'USERNAME_VAR', passwordVariable: 'PASSWORD_VAR')])	
+	
 	   steps {
                 echo 'image..'
+		withCredentials([usernamePassword(credentialsId: 'test-credentials-dockerhub', usernameVariable: 'USERNAME_VAR', passwordVariable: 'PASSWORD_VAR')])
 		sh script: 'sudo rm Dockerfile'		
 		sh script: 'sudo rm petclinic.war'	
 		sh script: 'sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .'				

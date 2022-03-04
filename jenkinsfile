@@ -51,7 +51,7 @@ pipeline {
 	
 	   steps {
                 echo 'image..'
-		withCredentials([usernamePassword(credentialsId: 'test-credentials-dockerhub', usernameVariable: 'USERNAME_VAR', passwordVariable: 'PASSWORD_VAR')])
+		withCredentials([usernamePassword(credentialsId: 'test-credentials-dockerhub', usernameVariable: 'USERNAME_VAR', passwordVariable: 'PASSWORD_VAR')]) {
 		sh script: 'sudo rm Dockerfile'		
 		sh script: 'sudo rm petclinic.war'	
 		sh script: 'sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .'				
@@ -64,6 +64,7 @@ pipeline {
 		sh script: 'sudo docker build -t 5688kiran/sampledevopsapplication:$BUILD_NUMBER .'	
 		sh script: 'sudo docker login -u ${USERNAME_VAR} -p ${PASSWORD_VAR}'				
 		sh script: 'sudo docker push 5688kiran/sampledevopsapplication:$BUILD_NUMBER'	
+				}
 		   }
         }
     }
