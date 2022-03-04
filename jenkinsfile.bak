@@ -47,7 +47,7 @@ pipeline {
 		sh script: '/opt/apache-maven-3.8.4/bin/mvn package'	
            }		
         }
-	    stage('Image') {
+	    stage('Image Creation') {
 	   steps {
                 echo 'image..'
 		sh script: 'sudo rm Dockerfile'		
@@ -58,9 +58,10 @@ pipeline {
 		sh script: 'echo "FROM tomcat:8" >> Dockerfile'		
 		sh script: 'echo "ADD petclinic.war /usr/local/tomcat/webapps/" >> Dockerfile'		
 		sh script: 'echo "CMD "catalina.sh" "run"" >> Dockerfile'		
-		sh script: 'echo "EXPOSE 8080" >> Dockerfile'						
+		sh script: 'echo "EXPOSE 8080" >> Dockerfile'		
+		withCredentials([usernamePassword(credentialsId: 'test-credentials-dockerhub', usernameVariable: 'USERNAME_VAR', passwordVariable: 'PASSWORD_VAR')])		
 		sh script: 'sudo docker build -t 5688kiran/sampledevopsapplication:$BUILD_NUMBER .'	
-		sh script: 'sudo docker login -u 5688kiran -p Munny*5688'				
+		sh script: 'sudo docker login -u ${USERNAME_VAR} -p ${PASSWORD_VAR}'				
 		sh script: 'sudo docker push 5688kiran/sampledevopsapplication:$BUILD_NUMBER'	
 		   }
         }
