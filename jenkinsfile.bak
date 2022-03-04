@@ -62,7 +62,7 @@ pipeline {
 		sh script: 'sudo docker build -t 5688kiran/sampledevopsapplication:$BUILD_NUMBER .'	
 		sh script: 'sudo docker login -u 5688kiran -p Munny*5688'				
 		sh script: 'sudo docker push 5688kiran/sampledevopsapplication:$BUILD_NUMBER'	
-			}
+		   }
         }
     }
 }
