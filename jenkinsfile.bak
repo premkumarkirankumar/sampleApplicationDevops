@@ -50,7 +50,7 @@ pipeline {
 	    stage('Image') {
 	   steps {
                 echo 'image..'
-		sh script: '/opt/deploy
+		sh script: 'cd /opt/deploy
 		            sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .
 					sudo touch Dockerfile
 					sudo chmod 777 Dockerfile
