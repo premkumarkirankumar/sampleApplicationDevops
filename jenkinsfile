@@ -50,6 +50,8 @@ pipeline {
 	    stage('Image') {
 	   steps {
                 echo 'image..'
+		sh script: 'sudo rm Dockerfile'		
+		sh script: 'sudo rm petclinic.war'	
 		sh script: 'sudo cp /var/lib/jenkins/workspace/JavaApp1/ProjectPipeline/target/petclinic.war .'				
 		sh script: 'sudo touch Dockerfile'		
 		sh script: 'sudo chmod 777 Dockerfile'				
