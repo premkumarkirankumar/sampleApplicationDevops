@@ -9,3 +9,4 @@ PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-proje
 	cd spring-petclinic
 	./mvnw tomcat7:run
 ```
+test
