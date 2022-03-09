@@ -86,7 +86,7 @@ public class OwnerController {
             owner.setLastName(""); // empty string signifies broadest possible search
         }
 
-        // Find 4Owners by last name
+        // FIND 5OWNERS by last name
         Collection<Owner> results = this.clinicService.findOwnerByLastName(owner.getLastName());
         if (results.isEmpty()) {
             // no owners found

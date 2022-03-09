@@ -35,7 +35,7 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
-                <li class="${cssMenu}"><a href="<spring:url value="/owners/find.html" htmlEscape="true" />"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> Find 4Owners</span></a></li>
+                <li class="${cssMenu}"><a href="<spring:url value="/owners/find.html" htmlEscape="true" />"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> FIND 5OWNERS</span></a></li>
                 <c:choose>
                     <c:when test="${name eq 'vets'}">
                         <c:set var="cssMenu" value="active"/>

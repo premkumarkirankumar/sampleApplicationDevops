@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <div class="container xd-container">
 
-        <h2>Find 4Owners</h2>
+        <h2>FIND 5OWNERS</h2>
 
         <spring:url value="/owners.html" var="formUrl"/>
         <form:form modelAttribute="owner" action="${fn:escapeXml(formUrl)}" method="get" class="form-horizontal"
